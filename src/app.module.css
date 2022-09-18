@@ -1,0 +1,59 @@
+.formInsetTodo {
+    width: 100%;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: calc(-54px / 2);
+    margin-bottom: 64px;
+}
+
+.formInsetTodo > :is(input, button) {
+    height: 100%;
+}
+
+.formInsetTodo button {
+    padding: 0;
+    margin: 0;
+
+    background-color: var(--blue-500);
+    color: var(--gray-100);
+    font-weight: bold;
+
+    padding: 0 1.125rem;
+    border: 0;
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    transition: background .1s;
+}
+
+.formInsetTodo button svg {
+    color: var(--gray-100);
+    font-weight: bold;
+}
+
+.formInsetTodo button:hover {
+    background: var(--blue-300);
+}
+
+.formInsetTodo input {
+    flex: 1;
+    border: none;
+    border-radius: 8px;
+    outline: 1px solid var(--gray-700);
+    padding: 16px;
+
+    background-color: var(--gray-500);
+    color: var(--gray-100);
+    line-height: 22.4;
+}
+
+.formInsetTodo input:focus-visible {
+    border: none;
+    outline: 1px solid var(--purple-500);
+}
