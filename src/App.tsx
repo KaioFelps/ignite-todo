@@ -38,6 +38,10 @@ function App() {
     if (taskListText[0] === " ") setTaskListText("")
   }
 
+  function deleteTask(id: number) {
+    setTasksList(oldTasks => oldTasks.filter(task => task.id !== id))
+  }
+
   return (
     <>
       <Header/>
@@ -69,7 +73,7 @@ function App() {
 
           <div className={styles.tasksWrapper}>
             { tasksList.length !== 0 ?
-            tasksList.map(task => <Task key={task.id} text={task.text} />) : <Notask/> }
+            tasksList.map(task => <Task key={task.id} id={task.id} onDelete={deleteTask} text={task.text} />) : <Notask/> }
           </div>
         </div>
       </div>
