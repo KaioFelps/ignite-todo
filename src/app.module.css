@@ -1,3 +1,13 @@
+.wrapper {
+    width: 100%;
+    max-width: 736px;
+    margin: 0 auto 4rem auto;
+    padding: 0 10px;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .formInsetTodo {
     width: 100%;
     height: 54px;
@@ -29,7 +39,7 @@
     align-items: center;
     gap: 8px;
 
-    transition: background .1s;
+    transition: background .1s, filter .2s;
 }
 
 .formInsetTodo button svg {
@@ -37,8 +47,12 @@
     font-weight: bold;
 }
 
-.formInsetTodo button:hover {
+.formInsetTodo button:not(:disabled):hover {
     background: var(--blue-300);
+}
+
+.formInsetTodo button:disabled {
+    filter: saturate(.3);
 }
 
 .formInsetTodo input {

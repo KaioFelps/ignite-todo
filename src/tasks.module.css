@@ -12,6 +12,10 @@
     transition: outline .2s, color .2s;
 }
 
+.taskBox:not(:last-child) {
+    margin-bottom: 0.75rem;
+}
+
 .taskBox:has(input:checked) {
     outline: 1px solid transparent;
 }
