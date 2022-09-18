@@ -1,0 +1,111 @@
+.taskBox {
+    padding: 16px;
+    background: var(--gray-500);
+    color: var(--gray-100);
+
+    border-radius: 8px;
+    outline: 1px solid var(--gray-400);
+
+    display: flex;
+    align-items: flex-start;
+
+    transition: outline .2s, color .2s;
+}
+
+.taskBox:has(input:checked) {
+    outline: 1px solid transparent;
+}
+
+.taskBox:has(input:checked) p {
+    color: var(--gray-300);
+    text-decoration-line: line-through;
+}
+
+.taskBox p {
+    flex: 1;
+    line-height: 1.6;
+    font-size: var(--fs-14);
+}
+
+.taskBox label {
+    position: relative;
+    margin-right: 0.9rem;
+    padding: 3px;
+}
+
+.taskBox label .behindInput {
+    opacity: 0;
+    background-color: var(--blue-500);
+    transition: opacity .1s;
+    border-radius: 999px;
+    width: 1.125rem;
+    height: 1.125rem;
+
+    position: absolute;
+    left: 3px;
+    top: 3px;
+}
+
+.taskBox label input {
+    appearance: none;
+    border-radius: 999px;
+    box-shadow: inset 0px 0px 0px 2px var(--blue-300);
+    width: 1.125rem;
+    height: 1.125rem;
+
+    transition: all .1s;
+}
+
+.taskBox label input:not(:checked):hover {
+    box-shadow: inset 0px 0px 0px 2px var(--blue-500);
+}
+
+.taskBox label:has(input:not(:checked):hover) .behindInput {
+    opacity: 0.2;
+}
+
+.taskBox label input:checked {
+    opacity: 0;
+}
+
+.taskBox label:has(input:not(:checked)) svg {
+    opacity: 0;
+}
+
+.taskBox label svg {
+    position: absolute;
+    left: 1.5px;
+    top: 1.5px;
+    color: var(--purple-500);
+}
+
+.taskBox label svg:hover {
+    color: var(--purple-300);
+}
+
+.taskBox :is(input, svg) {
+    transition: opacity .2s;
+}
+
+/* ---------------------------- */
+
+.taskBox button {
+    appearance: none;
+    border: 0;
+    border-radius: 4px;
+    padding: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--gray-300);
+    background-color: transparent;
+
+    transition: background .1s;
+}
+
+.taskBox button:hover {
+    color: var(--danger);
+    background-color: var(--gray-400);
+}

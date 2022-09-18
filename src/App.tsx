@@ -2,9 +2,22 @@ import { useState } from 'react'
 import { Header } from './Header'
 import styles from "./app.module.css"
 import { PlusCircle } from 'phosphor-react'
+import { Task } from "./Task"
+import { Notask } from './noTask'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  type tasksObjects = {
+    text: string;
+    id: number;
+  }
+
+  const tasksList: tasksObjects[] = [
+    // {
+    //   text: "testando",
+    //   id:1
+    // }
+  ]
 
   return (
     <>
@@ -17,6 +30,24 @@ function App() {
                 />
             <button type="submit">Criar <PlusCircle size={20} weight="bold"/></button>
         </form>
+
+        <div className={styles.tasks}>
+          <div className={styles.header}>
+            <div className={styles.title}>
+              Tarefas Criadas
+              <span className={styles.tasksCounter}>2</span>
+            </div>
+            <div className={`${styles.title} ${styles.purple}`}>
+              Concluídas
+              <span className={styles.tasksCounter}>0 de 2</span>
+            </div>
+          </div>
+
+          <div className={styles.tasksWrapper}>
+            { tasksList.length !== 0 ?
+            tasksList.map(task => <Task key={task.id} text={task.text} />) : <Notask/> }
+          </div>
+        </div>
       </div>
     </>
   )

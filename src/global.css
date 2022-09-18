@@ -42,7 +42,7 @@ body {
 body, input, textarea, button {
     font-family: "Inter", sans-serif;
     font-weight: 400;
-    font-size: 1rem;
+    font-size: var(--fs-16);
 }
 
 :focus-visible {
@@ -55,4 +55,7 @@ body, input, textarea, button {
     max-width: 736px;
     margin: 0 auto;
     padding: 0 10px;
+
+    display: flex;
+    flex-wrap: wrap;
 }

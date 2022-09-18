@@ -57,3 +57,44 @@
     border: none;
     outline: 1px solid var(--purple-500);
 }
+
+/* -------------------------- */
+
+.tasks .header .title {
+    display: flex;
+    gap: 8px;
+
+    font-size: var(--fs-14);
+    font-weight: 700;
+    color: var(--blue-300);
+}
+
+.tasks .header .title.purple {
+    color: var(--purple-300);
+}
+
+.tasks .header .title .tasksCounter {
+    background-color: var(--gray-400);
+    padding: 0.125rem 0.5rem;
+    font-size: var(--fs-12);
+    color: var(--gray-200);
+
+    border-radius: 999px;
+}
+
+.tasks {
+    width: 100%;
+}
+
+.tasks .header {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+
+    margin-bottom: 1.5rem;
+}
+
+.tasksWrapper {
+    display: flex;
+    flex-direction: column;
+}
