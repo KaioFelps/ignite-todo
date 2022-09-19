@@ -1,21 +1,31 @@
 import styles from "./tasks.module.css"
 import { Trash, CheckCircle } from "phosphor-react"
+import { ChangeEvent } from "react";
 
 type Props = {
     text: string;
     id: number;
-    onDelete: (el:number) => void
+    isChecked?: boolean;
+    onDelete: (el:number) => void;
+    onCheck: (e:boolean) => void;
 }
 
-export function Task(props: Props) {
+export function Task({isChecked = false, ...props}: Props) {
 
     function actionDeleteTask() {
         props.onDelete(props.id)
     }
 
+    function actionCheckTask(event: ChangeEvent<HTMLLabelElement>) {
+        let item = event.target
+        let newItem: Element = item.attributes == undefined ? item.children[0] : item
+
+        props.onCheck((newItem as HTMLInputElement).checked)
+    }
+
     return (
         <div className={`${styles.taskBox}`}>
-            <label>
+            <label className="label" onChange={actionCheckTask}>
                 <input type="checkbox" name="ConcludeTask" aria-label="Marcar como concluído"/>
                 <div className={styles.behindInput}></div>
                 <CheckCircle size={22} weight="fill"/>

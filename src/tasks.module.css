@@ -114,6 +114,6 @@
     background-color: var(--gray-400);
 }
 
-.taskBox button svg {
+.taskBox *:is(svg, label input, label div) {
     pointer-events: none;
 }

@@ -10,10 +10,12 @@ function App() {
   type tasksObjects = {
     text: string;
     id: number;
+    isChecked: boolean
   }
 
   const [taskListText, setTaskListText] = useState<string>("")
   const [tasksList, setTasksList] = useState<tasksObjects[]>([])
+  const [concludedTasks, setConcludedTasks] = useState<number>()
 
   function updateTaskListText(event: ChangeEvent<HTMLInputElement>) {
     const text = event.target.value
@@ -25,7 +27,8 @@ function App() {
 
     const newTasklistObject: tasksObjects = {
       text: taskListText,
-      id: tasksList.length + 1
+      id: tasksList.length + 1,
+      isChecked: false,
     }
 
     if (taskListText !== "" && taskListText !== " ") {
@@ -40,6 +43,16 @@ function App() {
 
   function deleteTask(id: number) {
     setTasksList(oldTasks => oldTasks.filter(task => task.id !== id))
+  }
+
+  function checkIt(isChecked: boolean) {
+    const actived = document.querySelectorAll(".label input")
+    let howManyActiveds = [];
+    for (let active of actived) {
+      if((active as HTMLInputElement).checked == true) howManyActiveds.push(active)
+    }
+
+    setConcludedTasks(howManyActiveds.length)
   }
 
   return (
@@ -63,17 +76,23 @@ function App() {
           <div className={styles.header}>
             <div className={styles.title}>
               Tarefas Criadas
-              <span className={styles.tasksCounter}>2</span>
+              <span className={styles.tasksCounter}>{tasksList.length}</span>
             </div>
             <div className={`${styles.title} ${styles.purple}`}>
               Concluídas
-              <span className={styles.tasksCounter}>0 de 2</span>
+              <span className={styles.tasksCounter}>{concludedTasks || 0} de {tasksList.length}</span>
             </div>
           </div>
 
           <div className={styles.tasksWrapper}>
             { tasksList.length !== 0 ?
-            tasksList.map(task => <Task key={task.id} id={task.id} onDelete={deleteTask} text={task.text} />) : <Notask/> }
+            tasksList.map(task => <Task
+                                    key={task.id}
+                                    id={task.id}
+                                    onDelete={deleteTask}
+                                    onCheck={checkIt}
+                                    text={task.text}
+                                    />) : <Notask/> }
           </div>
         </div>
       </div>
