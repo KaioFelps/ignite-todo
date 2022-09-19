@@ -7,20 +7,18 @@ type Props = {
     id: number;
     isChecked?: boolean;
     onDelete: (el:number) => void;
-    onCheck: (e:boolean) => void;
+    onCheck: (e: number) => void;
 }
 
 export function Task({isChecked = false, ...props}: Props) {
 
     function actionDeleteTask() {
         props.onDelete(props.id)
+        props.onCheck(1)
     }
 
     function actionCheckTask(event: ChangeEvent<HTMLLabelElement>) {
-        let item = event.target
-        let newItem: Element = item.attributes == undefined ? item.children[0] : item
-
-        props.onCheck((newItem as HTMLInputElement).checked)
+        props.onCheck()
     }
 
     return (
