@@ -7,7 +7,7 @@ type Props = {
     id: number;
     isChecked?: boolean;
     onDelete: (el:number) => void;
-    onCheck: (e: number) => void;
+    onCheck: (e?: number) => void;
 }
 
 export function Task({isChecked = false, ...props}: Props) {
