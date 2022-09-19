@@ -42,16 +42,17 @@ function App() {
   }
 
   function deleteTask(id: number) {
+    if (tasksList.filter(task => task.id === id)) checkIt(1)
     setTasksList(oldTasks => oldTasks.filter(task => task.id !== id))
   }
 
-  function checkIt(isChecked: boolean) {
+  function checkIt(id?: number) {
     const actived = document.querySelectorAll(".label input")
     let howManyActiveds = [];
     for (let active of actived) {
       if((active as HTMLInputElement).checked == true) howManyActiveds.push(active)
     }
-
+    if (id === 1) howManyActiveds.pop()
     setConcludedTasks(howManyActiveds.length)
   }
 
